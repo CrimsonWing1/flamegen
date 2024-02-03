@@ -7,9 +7,10 @@ Barely started yet!!
 
 ## Progress
 ### Finished -
-
+- Nothing.
+  
 ### In Progress -
-- Tribe system. Coding is hard.
+- Tribe/species system. Coding is hard.
   
 ### Planned -
 - Different name system depending on tribe
