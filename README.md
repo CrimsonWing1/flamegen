@@ -1,6 +1,6 @@
 # clangen... but wings of fire
 
-Initially created by just-some-cat, edit created by SableSteel (and many others!!), this mod made currently just by CrimsonWing1(me!)
+Initially created by **just-some-cat**, edit created by **SableSteel** (and many others!!), this mod made currently just by **CrimsonWing1**(me!)
 
 
 **Note:**
