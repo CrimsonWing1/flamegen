@@ -11,7 +11,7 @@ Barely started yet!!
 - Nothing.
   
 ### In Progress -
-- Tribe/species system. Coding is hard.
+- Tribe/species system. Hybrids, making colors specific to different tribes, and inheriting tribe from parents.
   
 ### Planned -
 - Different name system depending on tribe
