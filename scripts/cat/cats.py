@@ -304,25 +304,25 @@ class Cat():
         if self.species2 is None:
             self.species2 = self.species1
 
-        if self.species1 is "SK":
+        if self.species1 == "SK":
             self.species_display1 = "SkyWing"
-        elif self.species1 is "IC":
+        elif self.species1 == "IC":
             self.species_display1 = "IceWing"
-        elif self.species1 is "SA":
+        elif self.species1 == "SA":
             self.species_display1 = "SandWing"
-        elif self.species1 is "SE":
+        elif self.species1 == "SE":
             self.species_display1 = "SeaWing"
-        elif self.species1 is "NI":
+        elif self.species1 == "NI":
             self.species_display1 = "NightWing"
-        elif self.species1 is "MU":
+        elif self.species1 == "MU":
             self.species_display1 = "MudWing"
-        elif self.species1 is "RA":
+        elif self.species1 == "RA":
             self.species_display1 = "RainWing"
-        elif self.species1 is "SI":
+        elif self.species1 == "SI":
             self.species_display1 = "SilkWing"
-        elif self.species1 is "HI":
+        elif self.species1 == "HI":
             self.species_display1 = "HiveWing"
-        elif self.species1 is "LE":
+        elif self.species1 == "LE":
             self.species_display1 = "LeafWing"
         else:
             self.species_display1 = "This is a bug!"
@@ -330,25 +330,25 @@ class Cat():
         if self.species1 == self.species2:
             self.species_display2 = None
         else:
-            if self.species2 is "SK":
+            if self.species2 == "SK":
                 self.species_display2 = "/SkyWing"
-            elif self.species2 is "IC":
+            elif self.species2 == "IC":
                 self.species_display2 = "/IceWing"
-            elif self.species2 is "SA":
+            elif self.species2 == "SA":
                 self.species_display2 = "/SandWing"
-            elif self.species2 is "SE":
+            elif self.species2 == "SE":
                 self.species_display2 = "/SeaWing"
-            elif self.species2 is "NI":
+            elif self.species2 == "NI":
                 self.species_display2 = "/NightWing"
-            elif self.species2 is "MU":
+            elif self.species2 == "MU":
                 self.species_display2 = "/MudWing"
-            elif self.species2 is "RA":
+            elif self.species2 == "RA":
                 self.species_display2 = "/RainWing"
-            elif self.species2 is "SI":
+            elif self.species2 == "SI":
                 self.species_display2 = "/SilkWing"
-            elif self.species2 is "HI":
+            elif self.species2 == "HI":
                 self.species_display2 = "/HiveWing"
-            elif self.species2 is "LE":
+            elif self.species2 == "LE":
                 self.species_display2 = "/LeafWing"
             else:
                 self.species_display2 = "This is a bug!"
