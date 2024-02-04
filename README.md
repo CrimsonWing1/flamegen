@@ -3,9 +3,6 @@
 Initially created by **just-some-cat**, edit created by **SableSteel** (and many others!!), this mod made currently just by **CrimsonWing1**(me!)
 
 
-**Note:**
-Barely started yet!!
-
 ## Progress
 ### Finished -
 - Tribes and hybrids
