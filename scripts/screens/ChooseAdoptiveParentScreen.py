@@ -558,7 +558,7 @@ class ChooseAdoptiveParentScreen(Screens):
             name,
             object_id="#text_box_34_horizcenter")
 
-        info = str(self.the_cat.moons) + " moons\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
+        info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1.lower() + self.the_cat.species_display2.lower() + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
                self.the_cat.personality.trait
         self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                           scale(pygame.Rect((1000, 350), (188, 200))),
@@ -692,7 +692,7 @@ class ChooseAdoptiveParentScreen(Screens):
             name,
             object_id="#text_box_34_horizcenter")
 
-        info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.status + "\n" + \
+        info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1.lower() + self.selected_cat.species_display2.lower() + "\n" + self.selected_cat.status + "\n" + \
                self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
         self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                    scale(pygame.Rect((412, 350), (188, 200))),
