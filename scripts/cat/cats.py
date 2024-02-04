@@ -303,7 +303,6 @@ class Cat():
         
         if self.species2 is None:
             self.species2 = self.species1
-            if self.species2 is None
 
         if self.species1 is "SK":
             self.species_display1 = "SkyWing"
