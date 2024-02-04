@@ -660,6 +660,16 @@ class ProfileScreen(Screens):
         # NEWLINE ----------
         output += "\n"
 
+        # tribe
+
+        if the_cat.species_display2 is None:
+            output += the_cat.species_display1
+            output += "\n"
+        else:
+            output += the_cat.species_display1
+            output += the_cat.species_display2
+            output += "\n"
+
         # AGE
         if the_cat.age == 'kitten':
             output += 'young'

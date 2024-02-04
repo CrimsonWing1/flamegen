@@ -37,7 +37,7 @@ class Cat():
         'senior'
     ]
     tribes = [
-        'SK', 'SA', 'IC', 'RA', 'NI', 'MU', 'SE', 'SI', 'HI', "LE"
+        "SK", "SA", "IC", "RA", "NI", "MU", "SE", "SI", "HI", "LE"
     ]
     age_moons = {
         'newborn': game.config["cat_ages"]["newborn"],
@@ -295,10 +295,10 @@ class Cat():
         if self.species1 is None:
             hybrid_chance = randint(1,10)
             if hybrid_chance == 10:
-                self.species1 = [choice(Cat.tribes)]
-                self.species2 = [choice(Cat.tribes)]
+                self.species1 = choice(Cat.tribes)
+                self.species2 = choice(Cat.tribes)
             else:
-                self.species1 = [choice(Cat.tribes)]
+                self.species1 = choice(Cat.tribes)
                 self.species2 = self.species1
         
         if self.species2 is None:

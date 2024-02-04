@@ -558,9 +558,19 @@ class ChooseAdoptiveParentScreen(Screens):
             name,
             object_id="#text_box_34_horizcenter")
 
-        info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + self.the_cat.species_display2 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
+
+        if self.the_cat.species_display2 is None:
+          info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
                self.the_cat.personality.trait
-        self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
+          self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
+                                                                          scale(pygame.Rect((1000, 350), (188, 200))),
+                                                                          object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
+                                                                          manager=MANAGER
+                                                                          )
+        else:
+            info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + self.the_cat.species_display2 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
+               self.the_cat.personality.trait
+            self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                           scale(pygame.Rect((1000, 350), (188, 200))),
                                                                           object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
                                                                           manager=MANAGER
@@ -692,9 +702,18 @@ class ChooseAdoptiveParentScreen(Screens):
             name,
             object_id="#text_box_34_horizcenter")
 
-        info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + self.selected_cat.species_display2 + "\n" + self.selected_cat.status + "\n" + \
-               self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
-        self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
+        if self.selected_cat.species_display2 is None:
+          info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + "\n" + self.selected_cat.status + "\n" + \
+                 self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
+          self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
+                                                                   scale(pygame.Rect((412, 350), (188, 200))),
+                                                                   object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
+                                                                   manager=MANAGER
+                                                                   )
+        else:
+            info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + self.selected_cat.species_display2 + "\n" + self.selected_cat.status + "\n" + \
+                 self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
+            self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                    scale(pygame.Rect((412, 350), (188, 200))),
                                                                    object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
                                                                    manager=MANAGER

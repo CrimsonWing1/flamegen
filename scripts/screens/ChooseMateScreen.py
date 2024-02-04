@@ -661,15 +661,25 @@ class ChooseMateScreen(Screens):
             scale(pygame.Rect((130, 230), (240, 60))),
             name,
             object_id="#text_box_34_horizcenter")
-
-        info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + self.the_cat.species_display2 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
+        if self.the_cat.species_display2 is None:
+           info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
                self.the_cat.personality.trait
-        if self.the_cat.mate:
-            info += f"\n{len(self.the_cat.mate)} "
-            if len(self.the_cat.mate) > 1:
-                info += "mates"
-            else:
-                info += "mate"
+           if self.the_cat.mate:
+               info += f"\n{len(self.the_cat.mate)} "
+               if len(self.the_cat.mate) > 1:
+                   info += "mates"
+               else:
+                   info += "mate"
+        else:
+            info = str(self.the_cat.moons) + " moons\n" + self.the_cat.species_display1 + self.the_cat.species_display2 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + "\n" + \
+               self.the_cat.personality.trait
+            if self.the_cat.mate:
+               info += f"\n{len(self.the_cat.mate)} "
+               if len(self.the_cat.mate) > 1:
+                   info += "mates"
+               else:
+                   info += "mate"
+
         self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                           scale(pygame.Rect((412, 350), (188, 200))),
                                                                           object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
@@ -799,14 +809,23 @@ class ChooseMateScreen(Screens):
             name,
             object_id="#text_box_34_horizcenter")
 
-        info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + self.selected_cat.species_display2 + "\n" self.selected_cat.status + "\n" + \
-               self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
-        if self.selected_cat.mate:
-            info += f"\n{len(self.selected_cat.mate)} "
+
+        if self.selected_cat.species_display2 is None:
+            info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + "\n" + self.selected_cat.status + "\n" + self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
+            if self.selected_cat.mate:
+               info += f"\n{len(self.selected_cat.mate)} "
+               if len(self.selected_cat.mate) > 1:
+                  info += "mates"
+               else:
+                  info += "mate"
+        else:
+            info = str(self.selected_cat.moons) + " moons\n" + self.selected_cat.species_display1 + self.selected_cat.species_display2 + "\n" + self.selected_cat.status + "\n" + self.selected_cat.genderalign + "\n" + self.selected_cat.personality.trait
+            if self.selected_cat.mate:
+              info += f"\n{len(self.selected_cat.mate)} "
             if len(self.selected_cat.mate) > 1:
-                info += "mates"
+                  info += "mates"
             else:
-                info += "mate"
+                  info += "mate"
         
         self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(info,
                                                                    scale(pygame.Rect((1000, 350), (188, 200))),

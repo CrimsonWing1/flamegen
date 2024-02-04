@@ -229,7 +229,11 @@ class ChooseMentorScreen(Screens):
                 (300, 300)),
             manager=MANAGER)
 
-        info = self.the_cat.status + "\n" + self.the_cat.genderalign + \
+        if self.the_cat.species_display2 is None:
+          info = self.the_cat.species_display1 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + \
+               "\n" + self.the_cat.personality.trait + "\n" + self.the_cat.skills.skill_string(short=True)
+        else:
+          info = self.the_cat.species_display1 + self.the_cat.species_display2 + "\n" + self.the_cat.status + "\n" + self.the_cat.genderalign + \
                "\n" + self.the_cat.personality.trait + "\n" + self.the_cat.skills.skill_string(short=True)
         self.apprentice_details["apprentice_info"] = pygame_gui.elements.UITextBox(
             info,
@@ -346,10 +350,15 @@ class ChooseMentorScreen(Screens):
                 pygame.transform.scale(
                     self.selected_mentor.sprite,
                     (300, 300)), manager=MANAGER)
-
-            info = self.selected_mentor.status + "\n" + \
+            if self.selected_mentor.species_display2 is None:
+             info = self.selected_mentor.species_display1 + "\n" + self.selected_mentor.status + "\n" + \
                    self.selected_mentor.genderalign + "\n" + self.selected_mentor.personality.trait + "\n" + \
                    self.selected_mentor.skills.skill_string(short=True)
+            else:
+             info = self.selected_mentor.species_display2 + self.selected_mentor.species_display2 + "\n" + self.selected_mentor.status + "\n" + \
+                   self.selected_mentor.genderalign + "\n" + self.selected_mentor.personality.trait + "\n" + \
+                   self.selected_mentor.skills.skill_string(short=True)
+
             if len(self.selected_mentor.former_apprentices) >= 1:
                 info += f"\n{len(self.selected_mentor.former_apprentices)} former app(s)"
             if len(self.selected_mentor.apprentice) >= 1:
