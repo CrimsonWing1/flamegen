@@ -36,6 +36,9 @@ class Cat():
         'newborn', 'kitten', 'adolescent', 'young adult', 'adult', 'senior adult',
         'senior'
     ]
+    tribes = [
+        'SK', 'SA', 'IC', 'RA', 'NI', 'MU', 'SE', 'SI', 'HI', "LE"
+    ]
     age_moons = {
         'newborn': game.config["cat_ages"]["newborn"],
         'kitten': game.config["cat_ages"]["kitten"],
@@ -113,6 +116,10 @@ class Cat():
     def __init__(self,
                  prefix=None,
                  gender=None,
+                 species1=None,
+                 species2=None,
+                 species_display1=None,
+                 species_display2=None,
                  status="newborn",
                  backstory="clanborn",
                  parent1=None,
@@ -169,9 +176,13 @@ class Cat():
         self._mentor = None  # plz
         self._experience = None
         self._moons = None
+        self.species1 = species1
+        self.species2 = species2
 
         # Public attributes
         self.gender = gender
+        self.species_display1 = species_display1
+        self.species_display2 = species_display2
         self.status = status
         self.backstory = backstory
         self.age = None
@@ -279,6 +290,70 @@ class Cat():
         if self.gender is None:
             self.gender = choice(["female", "male"])
         self.g_tag = self.gender_tags[self.gender]
+
+        # tribe
+        if self.species1 is None:
+            hybrid_chance = randint(1,10)
+            if hybrid_chance == 10:
+                self.species1 = [choice(Cat.tribes)]
+                self.species2 = [choice(Cat.tribes)]
+            else:
+                self.species1 = [choice(Cat.tribes)]
+                self.species2 = self.species1
+        
+        if self.species2 is None:
+            self.species2 = self.species1
+            if self.species2 is None
+
+        if self.species1 is "SK":
+            self.species_display1 = "SkyWing"
+        elif self.species1 is "IC":
+            self.species_display1 = "IceWing"
+        elif self.species1 is "SA":
+            self.species_display1 = "SandWing"
+        elif self.species1 is "SE":
+            self.species_display1 = "SeaWing"
+        elif self.species1 is "NI":
+            self.species_display1 = "NightWing"
+        elif self.species1 is "MU":
+            self.species_display1 = "MudWing"
+        elif self.species1 is "RA":
+            self.species_display1 = "RainWing"
+        elif self.species1 is "SI":
+            self.species_display1 = "SilkWing"
+        elif self.species1 is "HI":
+            self.species_display1 = "HiveWing"
+        elif self.species1 is "LE":
+            self.species_display1 = "LeafWing"
+        else:
+            self.species_display1 = "This is a bug!"
+
+        if self.species1 == self.species2:
+            self.species_display2 = None
+        else:
+            if self.species2 is "SK":
+                self.species_display2 = "/SkyWing"
+            elif self.species2 is "IC":
+                self.species_display2 = "/IceWing"
+            elif self.species2 is "SA":
+                self.species_display2 = "/SandWing"
+            elif self.species2 is "SE":
+                self.species_display2 = "/SeaWing"
+            elif self.species2 is "NI":
+                self.species_display2 = "/NightWing"
+            elif self.species2 is "MU":
+                self.species_display2 = "/MudWing"
+            elif self.species2 is "RA":
+                self.species_display2 = "/RainWing"
+            elif self.species2 is "SI":
+                self.species_display2 = "/SilkWing"
+            elif self.species2 is "HI":
+                self.species_display2 = "/HiveWing"
+            elif self.species2 is "LE":
+                self.species_display2 = "/LeafWing"
+            else:
+                self.species_display2 = "This is a bug!"
+                     
 
         # These things should only run when generating a new cat, rather than loading one in.
         if not loading_cat:
