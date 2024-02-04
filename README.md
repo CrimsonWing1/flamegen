@@ -8,10 +8,10 @@ Barely started yet!!
 
 ## Progress
 ### Finished -
-- Nothing.
+- Tribes and hybrids
   
 ### In Progress -
-- Tribe/species system. Hybrids, making colors specific to different tribes, and inheriting tribe from parents.
+- Inheriting parent's tribe(s)
   
 ### Planned -
 - Different name system depending on tribe
