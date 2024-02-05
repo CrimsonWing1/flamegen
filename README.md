@@ -7,11 +7,10 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Tribes generating for new cats
   
 ### In Progress -
-- Changing role names and clan naming
+- Name system
   
 ### Will be added -
 - Inheriting parent's tribe(s)
-- Different name system depending on tribe
 - Sprite redraws (obviously)
 - Thought/event/patrol rewrites
 - Condition/illness rewrites / tribe-specific conditions/illnesses (like firescales, or a MudWing drying out, etc)
