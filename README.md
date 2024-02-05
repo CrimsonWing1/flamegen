@@ -7,7 +7,7 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 
 ## Progress
 ### Finished -
-- Tribes and hybrids
+- Tribes and hybrids generating for new cats
   
 ### In Progress -
 - Inheriting parent's tribe(s)
