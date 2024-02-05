@@ -10,9 +10,11 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Tribes and hybrids generating for new cats
   
 ### In Progress -
-- Inheriting parent's tribe(s)
+- Getting tribes to actually... save
+- Changing role names
   
-### Planned -
+### Will be added -
+- Inheriting parent's tribe(s)
 - Different name system depending on tribe
 - Sprite redraws (obviously)
 - Thought/event/patrol rewrites
