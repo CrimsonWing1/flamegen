@@ -136,6 +136,10 @@ class Pelt():
 
     """Holds all appearence information for a cat. """
     def __init__(self,
+                 species1=None,
+                 species2=None,
+                 species_display1=None,
+                 species_display2=None,
                  name:str="SingleColour",
                  length:str="short",
                  colour:str="WHITE",

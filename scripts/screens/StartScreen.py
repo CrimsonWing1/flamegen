@@ -91,32 +91,12 @@ class StartScreen(Screens):
             elif event.ui_element == self.social_buttons['discord_button']:
                 if platform.system() == 'Darwin':
                     subprocess.Popen(
-                        ["open", "-u", "https://discord.gg/clangen"])
+                        ["open", "-u", "https://discord.gg/cavcy3wAaa"])
                 elif platform.system() == 'Windows':
-                    os.system(f"start \"\" {'https://discord.gg/clangen'}")
+                    os.system(f"start \"\" {'https://discord.gg/cavcy3wAaa'}")
                 elif platform.system() == 'Linux':
                     subprocess.Popen(
-                        ['xdg-open', "https://discord.gg/clangen"])
-            elif event.ui_element == self.social_buttons['tumblr_button']:
-                if platform.system() == 'Darwin':
-                    subprocess.Popen(
-                        ["open", "-u", "https://officialclangen.tumblr.com/"])
-                elif platform.system() == 'Windows':
-                    os.system(
-                        f"start \"\" {'https://officialclangen.tumblr.com/'}")
-                elif platform.system() == 'Linux':
-                    subprocess.Popen(
-                        ['xdg-open', "https://officialclangen.tumblr.com/"])
-            elif event.ui_element == self.social_buttons['twitter_button']:
-                if platform.system() == 'Darwin':
-                    subprocess.Popen(
-                        ["open", "-u", "https://twitter.com/OfficialClangen"])
-                elif platform.system() == 'Windows':
-                    os.system(
-                        f"start \"\" {'https://twitter.com/OfficialClangen'}")
-                elif platform.system() == 'Linux':
-                    subprocess.Popen(
-                        ['xdg-open', "https://twitter.com/OfficialClangen"])
+                        ['xdg-open', "https://discord.gg/cavcy3wAaa"])
         elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
             if (event.key == pygame.K_RETURN or event.key == pygame.K_SPACE) and self.continue_button.is_enabled:
                 self.change_screen('camp screen')
@@ -178,18 +158,7 @@ class StartScreen(Screens):
                                   object_id="#quit_button",
                                   manager=MANAGER)
 
-        self.social_buttons["twitter_button"] = UIImageButton(scale(pygame.Rect((25, 1295), (80, 80))),
-                                                              "",
-                                                              object_id="#twitter_button",
-                                                              manager=MANAGER,
-                                                              tool_tip_text='Check out our Twitter!')
-        self.social_buttons["tumblr_button"] = UIImageButton(scale(pygame.Rect((115, 1295), (80, 80))),
-                                                             "",
-                                                             object_id="#tumblr_button",
-                                                             manager=MANAGER,
-                                                             tool_tip_text='Check out our Tumblr!')
-
-        self.social_buttons["discord_button"] = UIImageButton(scale(pygame.Rect((205, 1295), (80, 80))),
+        self.social_buttons["discord_button"] = UIImageButton(scale(pygame.Rect((25, 1295), (80, 80))),
                                                               "",
                                                               object_id="#discord_button",
                                                               manager=MANAGER,
