@@ -20,3 +20,4 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Thought/event/patrol rewrites
 - Condition/illness rewrites / tribe-specific conditions/illnesses (like firescales, or a MudWing drying out, etc)
 - Patrol art redraws
+- Any needed UI changes for anything that says cat
