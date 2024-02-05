@@ -711,22 +711,44 @@ class MakeClanScreen(Screens):
     def refresh_selected_cat_info(self, selected=None):
         # SELECTED CAT INFO
         if selected is not None:
+            if self.sub_screen == 'choose leader':
             
+                if selected.species_display2 is None:
+                  self.elements['cat_info'].set_text(selected.genderalign + "\n" +
+                                                   selected.species_display1 + "\n" + str(selected.age + "\n" +
+                                                   str(selected.personality.trait) + "\n" +
+                                                   str(selected.skills.skill_string())))
+                else:
+                  self.elements['cat_info'].set_text(selected.genderalign + "\n" +
+                                                   selected.species_display1 + selected.species_display2 + "\n" + str(selected.age + "\n" +
+                                                   str(selected.personality.trait) + "\n" +
+                                                   str(selected.skills.skill_string())))
+                self.elements['cat_info'].show()
+                if selected.genderalign == 'female' or selected.genderalign == 'trans female':
+                 self.elements['cat_name'].set_text(str(selected.name) + '--->' + 'Queen' + ' ' + str(selected.name))
+                elif selected.genderalign == 'male' or selected.genderalign == 'trans male':
+                 self.elements['cat_name'].set_text(str(selected.name) + '--->' + 'King' + ' ' + str(selected.name))
+                else:
+                 self.elements['cat_name'].set_text(str(selected.name) + '--->' + 'Ruler' + ' ' + str(selected.name))
+            else:
                 if selected.species_display2 is None:
                   self.elements['cat_name'].set_text(str(selected.name))
                   self.elements['cat_name'].show()
-                  self.elements['cat_info'].set_text(selected.gender + "\n" +
+                  self.elements['cat_info'].set_text(selected.genderalign + "\n" +
                                                    selected.species_display1 + "\n" + str(selected.age + "\n" +
                                                    str(selected.personality.trait) + "\n" +
                                                    str(selected.skills.skill_string())))
                 else:
                   self.elements['cat_name'].set_text(str(selected.name))
                   self.elements['cat_name'].show()
-                  self.elements['cat_info'].set_text(selected.gender + "\n" +
+                  self.elements['cat_info'].set_text(selected.genderalign + "\n" +
                                                    selected.species_display1 + selected.species_display2 + "\n" + str(selected.age + "\n" +
                                                    str(selected.personality.trait) + "\n" +
                                                    str(selected.skills.skill_string())))
                 self.elements['cat_info'].show()
+            
+            self.elements['cat_name'].show()
+
         else:
             self.elements['next_step'].disable()
             self.elements['cat_info'].hide()

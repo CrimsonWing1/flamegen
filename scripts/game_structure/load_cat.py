@@ -64,7 +64,7 @@ def json_load():
                         species1=cat["species1"],
                         species2=cat["species2"],
                         species_display1=cat["species_display1"],
-                        species_display2=cat["species_display1"],
+                        species_display2=cat["species_display2"] if "species_display2" in cat else None,
                         status=cat["status"],
                         parent1=cat["parent1"],
                         parent2=cat["parent2"],
