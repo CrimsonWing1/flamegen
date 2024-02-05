@@ -7,11 +7,11 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 
 ## Progress
 ### Finished -
-- Tribes and hybrids generating for new cats
+- Tribes generating for new cats
   
 ### In Progress -
 - Getting tribes to actually save
-- Changing role names
+- Changing role names and clan naming
   
 ### Will be added -
 - Inheriting parent's tribe(s)
