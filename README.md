@@ -10,7 +10,7 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Tribes and hybrids generating for new cats
   
 ### In Progress -
-- Getting tribes to actually... save
+- Getting tribes to actually save
 - Changing role names
   
 ### Will be added -
