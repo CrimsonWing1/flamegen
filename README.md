@@ -18,3 +18,4 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Condition/illness rewrites / tribe-specific conditions/illnesses (like firescales, or a MudWing drying out, etc)
 - Patrol art redraws
 - Any needed UI changes for anything that says cat
+- Whatever else I think of/haven't thought of
