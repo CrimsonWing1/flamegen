@@ -7,7 +7,6 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 - Tribes generating for new cats
   
 ### In Progress -
-- Getting tribes to actually save
 - Changing role names and clan naming
   
 ### Will be added -
