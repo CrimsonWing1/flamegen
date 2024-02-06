@@ -18,7 +18,6 @@ from typing import Dict
 logger = logging.getLogger(__name__)
 from scripts.game_structure import image_cache
 from scripts.cat.history import History
-from scripts.cat.names import names
 from scripts.cat.pelts import Pelt
 from scripts.cat.sprites import sprites
 from scripts.game_structure.game_essentials import game, screen_x, screen_y
@@ -307,49 +306,24 @@ def create_new_cat(Cat,
         else:
             # grab starting names and accs for loners/kittypets
             if kittypet:
-                name = choice(names.names_dict["loner_names"])
+                name = Name
                 if choice([1, 2]) == 1:
                     accessory = choice(Pelt.collars)
             elif loner and choice([1, 2]) == 1:  # try to give name from full loner name list
-                name = choice(names.names_dict["loner_names"])
+                name = Name
             else:
-                name = choice(
-                    names.names_dict["normal_prefixes"])  # otherwise give name from prefix list (more nature-y names)
+                name = Name # otherwise give name from prefix list (more nature-y names)
 
             # now we make the cats
             if new_name:  # these cats get new names
-                if choice([1, 2]) == 1:  # adding suffix to OG name
-                    spaces = name.count(" ")
-                    if spaces > 0:
-                        # make a list of the words within the name, then add the OG name back in the list
-                        words = name.split(" ")
-                        words.append(name)
-                        new_prefix = choice(words)  # pick new prefix from that list
-                        name = new_prefix
-                    new_cat = Cat(moons=age,
-                                  prefix=name,
-                                  status=status,
-                                  gender=_gender,
-                                  backstory=backstory,
-                                  parent1=parent1,
-                                  parent2=parent2)
-                else:  # completely new name
-                    new_cat = Cat(moons=age,
-                                  status=status,
-                                  gender=_gender,
-                                  backstory=backstory,
-                                  parent1=parent1,
-                                  parent2=parent2)
-            # these cats keep their old names
-            else:
+                name = Name
                 new_cat = Cat(moons=age,
-                              prefix=name,
-                              suffix="",
-                              status=status,
-                              gender=_gender,
-                              backstory=backstory,
-                              parent1=parent1,
-                              parent2=parent2)
+                                  name=name,
+                                  status=status,
+                                  gender=_gender,
+                                  backstory=backstory,
+                                  parent1=parent1,
+                                  parent2=parent2)
 
         # give em a collar if they got one
         if accessory:
@@ -427,23 +401,19 @@ def create_outside_cat(Cat, status, backstory, alive=True, thought=None):
     """
         TODO: DOCS
         """
-    suffix = ''
     if backstory in BACKSTORIES["backstory_categories"]["rogue_backstories"]:
         status = 'rogue'
     elif backstory in BACKSTORIES["backstory_categories"]["former_clancat_backstories"]:
         status = "former Clancat"
     if status == 'kittypet':
-        name = choice(names.names_dict["loner_names"])
+        name = Name
     elif status in ['loner', 'rogue']:
-        name = choice(names.names_dict["loner_names"] +
-                      names.names_dict["normal_prefixes"])
+        name = Name
     elif status == 'former Clancat':
-        name = choice(names.names_dict["normal_prefixes"])
-        suffix = choice(names.names_dict["normal_suffixes"])
+        name = Name
     else:
         name = choice(names.names_dict["loner_names"])
-    new_cat = Cat(prefix=name,
-                  suffix=suffix,
+    new_cat = Cat(name=name,
                   status=status,
                   gender=choice(['female', 'male']),
                   backstory=backstory)
@@ -464,7 +434,7 @@ def create_outside_cat(Cat, status, backstory, alive=True, thought=None):
 
     game.clan.add_cat(new_cat)
     game.clan.add_to_outside(new_cat)
-    name = str(name + suffix)
+    name = str(name)
 
     return name
 
@@ -1001,7 +971,7 @@ def event_text_adjust(Cat,
             cat_dict["r_c"] = (str(other_cat.name))
 
     if new_cat:
-        cat_dict["n_c_pre"] = (str(new_cat.name.prefix), None)
+        cat_dict["n_c_pre"] = (str(new_cat.name), None)
         cat_dict["n_c"] = (str(new_cat.name), choice(new_cat.pronouns))
 
     if other_clan_name:
@@ -1041,8 +1011,8 @@ def leader_ceremony_text_adjust(Cat,
     used to adjust the text for leader ceremonies
     """
     replace_dict = {
-        "m_c_star": (str(leader.name.prefix + "star"), choice(leader.pronouns)),
-        "m_c": (str(leader.name.prefix + leader.name.suffix), choice(leader.pronouns)),
+        "m_c_star": (str(leader.name), choice(leader.pronouns)),
+        "m_c": (str(leader.name), choice(leader.pronouns)),
     }
 
     if life_giver:

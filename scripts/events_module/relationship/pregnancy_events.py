@@ -14,7 +14,6 @@ from scripts.cat.cats import Cat, cat_class
 from scripts.event_class import Single_Event
 from scripts.cat_relations.relationship import Relationship
 from scripts.events_module.condition_events import Condition_Events
-from scripts.cat.names import names, Name
 
 import ujson
 
@@ -346,8 +345,8 @@ class Pregnancy_Events():
                 kit.backstory = "outsider"
                 if cat.exiled:
                     kit.status = 'loner'
-                    name = choice(names.names_dict["normal_prefixes"])
-                    kit.name = Name('loner', prefix=name, suffix="")
+                    name = Name
+                    kit.name = Name
                 if other_cat and not other_cat.outside:
                     kit.backstory = "outsider2"
                 if cat.outside and not cat.exiled:

@@ -10,13 +10,12 @@ import pygame_gui
 from sys import exit
 from re import sub
 from platform import system
-from random import choice
+from random import choice, randint
 import logging
 import subprocess
 
 
 from scripts.cat.history import History
-from scripts.cat.names import Name
 from pygame_gui.elements import UIWindow
 
 from scripts.housekeeping.datadir import get_save_dir, get_cache_dir, get_saved_images_dir, get_data_dir
@@ -293,7 +292,7 @@ class ChangeCatName(UIWindow):
             container=self
         )
 
-        self.specsuffic_hidden = self.the_cat.name.specsuffix_hidden
+        
 
         self.heading = pygame_gui.elements.UITextBox(f"-Change {self.the_cat.name}'s Name-",
                                                      scale(pygame.Rect(
@@ -317,66 +316,16 @@ class ChangeCatName(UIWindow):
 
         self.prefix_entry_box = pygame_gui.elements.UITextEntryLine(
             scale(pygame.Rect((0 + x_pos, 100 + y_pos), (240, 60))),
-            initial_text=self.the_cat.name.prefix,
+            initial_text=self.the_cat.name,
             manager=MANAGER,
             container=self)
 
-        self.random_prefix = UIImageButton(scale(pygame.Rect((245 + x_pos, 97 + y_pos), (68, 68))), "",
+        self.randomize_name = UIImageButton(scale(pygame.Rect((245 + x_pos, 97 + y_pos), (68, 68))), "",
                                            object_id="#random_dice_button",
                                            manager=MANAGER,
                                            container=self,
-                                           tool_tip_text='Randomize the prefix')
+                                           tool_tip_text='Randomize the name')
 
-        self.random_suffix = UIImageButton(scale(pygame.Rect((563 + x_pos, 97 + y_pos), (68, 68))), "",
-                                           object_id="#random_dice_button",
-                                           manager=MANAGER,
-                                           container=self,
-                                           tool_tip_text='Randomize the suffix')
-
-        # 636
-        self.toggle_spec_block_on = UIImageButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
-                                                  object_id="#unchecked_checkbox",
-                                                  tool_tip_text=f"Remove the cat's special suffix",
-                                                  manager=MANAGER,
-                                                  container=self)
-
-        self.toggle_spec_block_off = UIImageButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
-                                                   object_id="#checked_checkbox",
-                                                   tool_tip_text="Re-enable the cat's special suffix", manager=MANAGER,
-                                                   container=self)
-
-        if self.the_cat.name.status in self.the_cat.name.names_dict["special_suffixes"]:
-            self.suffix_entry_box = pygame_gui.elements.UITextEntryLine(
-                scale(pygame.Rect((318 + x_pos, 100 + y_pos), (240, 60))),
-                placeholder_text=self.the_cat.name.names_dict["special_suffixes"]
-                [self.the_cat.name.status], manager=MANAGER,
-                container=self)
-            if not self.the_cat.name.specsuffix_hidden:
-                self.toggle_spec_block_on.show()
-                self.toggle_spec_block_on.enable()
-                self.toggle_spec_block_off.hide()
-                self.toggle_spec_block_off.disable()
-                self.random_suffix.disable()
-                self.suffix_entry_box.disable()
-            else:
-                self.toggle_spec_block_on.hide()
-                self.toggle_spec_block_on.disable()
-                self.toggle_spec_block_off.show()
-                self.toggle_spec_block_off.enable()
-                self.random_suffix.enable()
-                self.suffix_entry_box.enable()
-                self.suffix_entry_box.set_text(self.the_cat.name.suffix)
-
-        else:
-            self.toggle_spec_block_on.disable()
-            self.toggle_spec_block_on.hide()
-            self.toggle_spec_block_off.disable()
-            self.toggle_spec_block_off.hide()
-            self.suffix_entry_box = pygame_gui.elements.UITextEntryLine(
-                scale(pygame.Rect((318 + x_pos, 100 + y_pos), (240, 60))),
-                initial_text=self.the_cat.name.suffix, manager=MANAGER,
-                container=self)
-        self.set_blocking(True)
 
     def process_event(self, event):
         super().process_event(event)
@@ -384,22 +333,133 @@ class ChangeCatName(UIWindow):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.done_button:
                 old_name = str(self.the_cat.name)
-
-                self.the_cat.specsuffix_hidden = self.specsuffic_hidden
-                self.the_cat.name.specsuffix_hidden = self.specsuffic_hidden
-
                 # Note: Prefixes are not allowed be all spaces or empty, but they can have spaces in them.
                 if sub(r'[^A-Za-z0-9 ]+', '', self.prefix_entry_box.get_text()) != '':
-                    self.the_cat.name.prefix = sub(
+                    self.the_cat.name = sub(
                         r'[^A-Za-z0-9 ]+', '', self.prefix_entry_box.get_text())
+                    
+                if event.ui_element == self.randomize_name:
+                    self.nightnamenumber=randint(1, 3)
+                    if self.nightnamenumber == 1:
+                        self.nightnametype="Night"
+                    elif self.nightnamenumber == 2:
+                        self.nightnametype="Attribute"
+                    else:
+                        self.nightnametype="Personality"
+  
+                    if self.nightnametype == "Night":
+                     night_prefixes=[
+                    "Moon", "Star", "Bright", "Eclipse", "Meteor", "North"
+                ]
+                     night_suffixes=[
+                    "watcher", "bringer", "flight", "speaker", "reader", "listener"
+                ]
+                    elif self.nightnametype == "Attribute":
+                     night_prefixes=[
+                    "Big", "Strong", "Swift", "Quick", "Small", "Tiny"
+                ]
+                     night_suffixes=[
+                    "wings", "tail", "strike", "claws", "flight", "swipe", "sight"
+                ]
+                    elif self.nightnametype == "Personality":
+                     night_prefixes=[
+                    "Thoughtful", "Vengeful", "Greatness", "Wisdom", "Bravery", "Prowess", "Freedom", "Hopeful", "Patience", "Charity", "Kindness", "Honesty", "Loyalty", "Courage", "Charming", "Cleverness"
+                ]
+                     night_suffixes=None
 
-                # Suffixes can be empty, if you want. However, don't change the suffix if it's currently being hidden
-                # by a special suffix.
-                if self.the_cat.name.status not in self.the_cat.name.names_dict["special_suffixes"] or \
-                        self.the_cat.name.specsuffix_hidden:
-                    self.the_cat.name.suffix = sub(
-                        r'[^A-Za-z0-9 ]+', '', self.suffix_entry_box.get_text())
-                    self.name_changed.show()
+                    leaf_names=[
+                 "Willow", "Clover", "Bamboo", "Jade", "Juniper", "Lily", "Daisy", "Briar", "Grove",  "Nightshade", "Evergreen",  "Hemlock", "Nettle", "Sundew", "Belladonna", "Castor", "Foxglove", "Birch", "Snakeroot", "Larkspur",  "Bayleaf", "Anther", "Calyx", "Cypress", "Aster", "Orchid",  "Myrtle", "Crocus", "Dracaena", "Coleus", "Cedar", "Magnolia", "Redwood", "Maple", "Sycamore", "Pine", "Hickory"
+            ]
+
+                    ice_names=[
+                "Snowfall", "Blizzard", "Glacier", "Freeze", "Frostbite", "Tundra", "Snowstorm", "Snowy", "Winter", "Hail", "Hailstorm", "Frostburn", "Walrus", "Lynx", "Polar", "Seal", "Penguin", "North", "Aurora", "Melt", "Arctic", "Wolf", "Fox", "Avalanche", "Sleet", "Snowshoe", "Hare", "Crystal", "Frost", "Berber", "Brash", "Contrail", "Snowdrift", "Fjord", "Plow", "Mink", "Whale", "Narwhal", "Tern", "Orca", "Puffin", "Ptarmigan", "Caribou", "Antler", "Shiver", "Chill", "Frigid", "Iceberg", "Diamond", "Glass", "Frazil", "Quartz"
+            ]
+
+                    sea_names=[
+                "Aquamarine", "Orca", "Fish", "Ocean", "Tide", "Moon", "Coral", "Riptide", "Tsunami", "Flood", "Wave", "Diamond", "Shark", "Dolphin", "Octopus", "Crab", "Pearl", "Shore", "Seashell", "River", "Beach", "Lake", "Delta", "Stream", "Blue", "Depth", "Indigo", "Violet", "Salmon", "Whirlpool", "Pool", "Waterfall", "Rain", "Shell", "Sapphire", "Cerulean", "Typhoon", "Current", "Bay", "Cyan", "Downpour", "Drizzle", "Cod", "Bluegill", "Fin", "Trout", "Bass", "Marlin", "Mahi", "Carp", "Snook", "Lionfish", "Flounder", "Snapper", "Angler"
+            ]
+
+                    sand_names=[
+                "Scorpion", "Desert", "Heatwave", "Mosaic", "Glass", "Oasis", "Palm", "Vulture", "Cactus", "Sting", "Snake", "Burn", "Ray", "Sun", "Fox", "Tan", "Aardvark", "Caracal", "Antelope", "Coyote", "Hyena", "Acacia", "Sandgrouse", "Sahara", "Dune", "Sandstorm", "Canyon", "Sierra", "Jerboa", "Savannah", "Camel", "Outback", "Drought", "Barren", "Quicksand", "Summer", "Dust", "Sandpiper", "Kalahari", "Arid", "Onyx", "Quartz", "Calcite", "Basalt"
+            ]
+
+                    rain_names=[
+                "Charming", "Brave", "Hopeful", "Corageous", "Clever", "Dazzling", "Beautiful", "Exquisite", "Magnificent", "Tangerine", "Orange", "Pinapple", "Mango", "Coconut", "Peach", "Pear", "Banana", "Pumpkin", "Apricot", "Grapefruit", "Dragonfruit", "Watermelon", "Persimmon", "Kiwi", "Sloth", "Snake", "Chameleon", "Sugarglider", "Pangolin", "Leopard", "Forest", "Canopy", "Python", "Tiger", "Hummingbird", "Bear", "Lily", "Orchid", "Lilac", "Wisteria", "Jasmine", "Oleander"
+            ]
+
+                    mud_names=[
+                "Clay", "Swamp", "Crocodile", "Caiman", "Reed", "Fern", "Cattail", "Acorn", "Agate", "Alligator", "Autumn", "Bayou", "Bramble", "Creek", "Egret", "Auburn", "Bronze", "Umber", "Brick", "Amber", "Marsh", "Jasper", "Silt", "Cypress", "Loam", "Mulch", "Maroon", "Copper", "Geode", "Bog", "Hyacinth", "Slue", "Moss", "Snake", "Cottonmouth", "Gar", "Hog", "Boar", "Bass", "Coot", "Duck", "Ibis", "Salamander", "Toad", "Frog", "Puma", "Taper", "Snail", "Sludge"
+            ]
+
+                    hive_names=[
+                "Bee", "Wasp", "Cricket", "Stickbug", "Hornet", "Fireant", "Sting", "Mosquito", "Fly", "Mantis", "Beetle", "Spider", "Firefly", "Alderfly", "Antlion", "Bluejacket", "Bristletail", "Caterpillar", "Carniolan", "Carpenter", "Cobalt", "Cockroach", "Horntail", "Hoverfly", "Larder", "Longhorn", "Nightcrawler", "Skipjack", "Springtail", "Spoonwing", "Citricola", "Chrysis", "Ladybug", "Lilyleaf", "Myrmecia", "Rubytail", "Summerthorn"
+            ]
+                    sky_names=[
+                "Flame", "Fire", "Smoke", "Ash", "Soot", "Burn", "Blaze", "Hawk", "Eagle", "Owl", "Osprey", "Ruby", "Falcon", "Vulture", "Tourmaline", "Condor", "Buzzard", "Red", "Scarlet", "Crimson", "Kestrel", "Maroon", "Kite", "Merlin", "Garnet", "Carnelian", "Topaz", "Citrine", "Jasper", "Aventurine", "Zircon", "Cliff", "Cliffside", "Rock", "Rockfall", "Mountain", "Ridge", "Summit", "Boulder", "Rubble", "Arete", "Range", "Scree", "Massif", "Moraine", "Peak", "Cairn", "Baisin", "Pinnacle", "Vermillion", "Cardinal", "Amaranth", "Burgundy", "Copper", "Claret", "Auburn", "Cloud"
+            ]
+
+
+                    silk_names=[
+                "Monarch", "Morpho", "Peacock", "Orchid", "Sunset", "Glasswing", "Silkworm", "Swallowtail", "Adonis", "Commodore", "Lacewing", "Birdwing", "Emperor", "Agrias", "Ermine", "Comet", "Galium", "Cecropia", "Leopard", "Atlas", "Browntail", "Cinnabar," "Ethereal", "Tigermoth", "Hummingbird"
+                
+            ]
+                    self.name_speciesnumber=randint(1, 2)
+                    if self.name_speciesnumber == 1:
+                      if self.the_cat.species1 == "SK":
+                        self.the_cat.name=choice(sky_names)
+                      elif self.the_cat.species1 == "SA":
+                        self.the_cat.name=choice(sand_names)
+                      elif self.the_cat.species1 == "IC":
+                        self.the_cat.name=choice(ice_names)
+                      elif self.the_cat.species1 == "SE":
+                        self.the_cat.name=choice(sea_names)
+                      elif self.the_cat.species1 == "NI":
+                        if night_suffixes is None:
+                           self.the_cat.name=choice(night_prefixes)
+                        else:
+                           self.the_cat.name=choice(night_prefixes) + choice(night_suffixes)
+                      elif self.the_cat.species1 == "MU":
+                        self.the_cat.name=choice(mud_names)
+                      elif self.the_cat.species1 == "RA":
+                        self.the_cat.name=choice(rain_names)
+                      elif self.the_cat.species1 == "SI":
+                        self.the_cat.name=choice(silk_names)
+                      elif self.the_cat.species1 == "HI":
+                        self.the_cat.name=choice(hive_names)
+                      elif self.the_cat.species1 == "LE":
+                        self.the_cat.name=choice(leaf_names)
+                      else:
+                        self.the_cat.name="This is a bug!"
+                    elif self.the_cat.name_speciesnumber == 2:
+                      if self.the_cat.species2 == "SK":
+                        self.the_cat.name=choice(sky_names)
+                      elif self.the_cat.species2 == "SA":
+                        self.the_cat.name=choice(sand_names)
+                      elif self.the_cat.species2 == "IC":
+                        self.the_cat.name=choice(ice_names)
+                      elif self.the_cat.species2 == "SE":
+                        self.the_cat.name=choice(sea_names)
+                      elif self.the_cat.species2 == "NI":
+                        if night_suffixes is None:
+                            self.the_cat.name=choice(night_prefixes)
+                        else:
+                            self.the_cat.name=choice(night_prefixes) + choice(night_suffixes)
+                      elif self.the_cat.species2 == "MU":
+                        self.the_cat.name=choice(mud_names)
+                      elif self.the_cat.species2 == "RA":
+                        self.the_cat.name=choice(rain_names)
+                      elif self.the_cat.species2 == "SI":
+                        self.the_cat.name=choice(silk_names)
+                      elif self.the_cat.species2 == "HI":
+                        self.the_cat.name=choice(hive_names)
+                      elif self.the_cat.species2 == "LE":
+                        self.the_cat.name=choice(leaf_names)
+                      else:
+                        self.the_cat.name="This is a bug!"
+                    else:
+                      self.the_cat.name="This is a bug!"
+                self.prefix_entry_box.set_text(self.the_cat.name)
+                    
 
                 if old_name != str(self.the_cat.name):
                     self.name_changed.show()
@@ -407,50 +467,7 @@ class ChangeCatName(UIWindow):
                         f"-Change {self.the_cat.name}'s Name-")
                 else:
                     self.name_changed.hide()
-
-            elif event.ui_element == self.random_prefix:
-                if self.suffix_entry_box.text:
-                    use_suffix = self.suffix_entry_box.text
-                else:
-                    use_suffix = self.the_cat.name.suffix
-                self.prefix_entry_box.set_text(Name(self.the_cat.status,
-                                                    None,
-                                                    use_suffix,
-                                                    self.the_cat.pelt.colour,
-                                                    self.the_cat.pelt.eye_colour,
-                                                    self.the_cat.pelt.name,
-                                                    self.the_cat.pelt.tortiepattern).prefix)
-            elif event.ui_element == self.random_suffix:
-                if self.prefix_entry_box.text:
-                    use_prefix = self.prefix_entry_box.text
-                else:
-                    use_prefix = self.the_cat.name.prefix
-                self.suffix_entry_box.set_text(Name(self.the_cat.status,
-                                                    use_prefix,
-                                                    None,
-                                                    self.the_cat.pelt.colour,
-                                                    self.the_cat.pelt.eye_colour,
-                                                    self.the_cat.pelt.name,
-                                                    self.the_cat.pelt.tortiepattern).suffix)
-            elif event.ui_element == self.toggle_spec_block_on:
-                self.specsuffic_hidden = True
-                self.suffix_entry_box.enable()
-                self.random_suffix.enable()
-                self.toggle_spec_block_on.disable()
-                self.toggle_spec_block_on.hide()
-                self.toggle_spec_block_off.enable()
-                self.toggle_spec_block_off.show()
-                self.suffix_entry_box.set_text(self.the_cat.name.suffix)
-            elif event.ui_element == self.toggle_spec_block_off:
-                self.specsuffic_hidden = False
-                self.random_suffix.disable()
-                self.toggle_spec_block_off.disable()
-                self.toggle_spec_block_off.hide()
-                self.toggle_spec_block_on.enable()
-                self.toggle_spec_block_on.show()
-                self.suffix_entry_box.set_text("")
-                self.suffix_entry_box.rebuild()
-                self.suffix_entry_box.disable()
+                    
             elif event.ui_element == self.back_button:
                 game.switches['window_open'] = False
                 game.all_screens['profile screen'].exit_screen()

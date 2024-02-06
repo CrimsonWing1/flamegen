@@ -4,7 +4,7 @@
         "",
         "<b>Mod Credits:</b>",
         "",
-        "This is a mod of ClanGen to make it based off of Wings of Fire (made by Tui Sutherland)",
+        "This is a mod of ClanGen to make it based off of Wings of Fire, a book series by Tui Sutherland!",
         "",
         "<b>Made by:</b> <i>Crimsonwing1</i>",
         "",
@@ -98,5 +98,8 @@
         "Tybaxel": "Patrol sprites, Clan creation screen art",
         "wood pank": "Art",
         "ZtheCorgi (Zabe)": "Nylon & indigo collars, various small bugfixes and proofreading"
+    },
+    "mod_contrib":{
+        
     }
 }

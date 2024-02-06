@@ -57,8 +57,7 @@ def json_load():
         try:
             
             new_cat = Cat(ID=cat["ID"],
-                        prefix=cat["name_prefix"],
-                        suffix=cat["name_suffix"],
+                        name=cat["name"],
                         specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
                         gender=cat["gender"],
                         species1=cat["species1"],
@@ -286,8 +285,7 @@ def csv_load(all_cats):
                     'error_message'] = '2There was an error loading cat # ' + str(
                     attr[0])
                 the_cat = Cat(ID=attr[0],
-                              prefix=attr[1].split(':')[0],
-                              suffix=attr[1].split(':')[1],
+                              name=attr[1],
                               gender=attr[2],
                               status=attr[3],
                               pelt=the_pelt,

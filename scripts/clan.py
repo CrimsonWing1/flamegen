@@ -25,7 +25,6 @@ from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
 from scripts.utility import update_sprite, get_current_season, quit  # pylint: disable=redefined-builtin
 from scripts.cat.cats import Cat, cat_class
-from scripts.cat.names import names
 from scripts.clan_resources.freshkill import Freshkill_Pile, Nutrition
 from scripts.cat.sprites import sprites
 from sys import exit  # pylint: disable=redefined-builtin
@@ -1100,7 +1099,7 @@ class OtherClan():
             'cunning', 'wary', 'logical', 'proud', 'stoic', 'mellow',
             'bloodthirsty', 'amiable', 'gracious'
         ]
-        self.name = name or choice(names.names_dict["normal_prefixes"])
+        self.name = name
         self.relations = relations or randint(8, 12)
         self.temperament = temperament or choice(temperament_list)
         if self.temperament not in temperament_list:

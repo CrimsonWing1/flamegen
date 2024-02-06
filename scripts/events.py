@@ -960,8 +960,7 @@ class Events:
                 else:
                     c = random.choice([1, 2, 3])
                     if c == 1:
-                        text = str(game.clan.deputy.name.prefix) + str(
-                            game.clan.deputy.name.suffix) + \
+                        text = str(game.clan.deputy.name) + \
                                ' has been promoted to the new leader of the Clan. ' \
                                'They travel immediately to the Moonstone to get their ' \
                                'nine lives and are hailed by their new name, ' + \

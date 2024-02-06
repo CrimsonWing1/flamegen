@@ -1,4 +1,4 @@
-from scripts.cat.names import names
+
 from scripts.cat_relations.relationship import Relationship
 
 import random
@@ -8,7 +8,6 @@ from scripts.events_module.generate_events import GenerateEvents
 from scripts.utility import event_text_adjust, change_clan_relations, change_relationship_values, create_new_cat
 from scripts.game_structure.game_essentials import game
 from scripts.event_class import Single_Event
-from scripts.cat.names import Name
 from scripts.cat.history import History
 
 

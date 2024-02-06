@@ -12,7 +12,6 @@ from ..events_module.generate_events import GenerateEvents
 
 import ujson
 
-from .names import Name
 from .pelts import Pelt
 from scripts.conditions import Illness, Injury, PermanentCondition, get_amount_cat_for_one_medic, \
     medical_cats_condition_fulfilled
@@ -114,7 +113,7 @@ class Cat():
     grief_strings = {}
 
     def __init__(self,
-                 prefix=None,
+                 name=None,
                  gender=None,
                  species1=None,
                  species2=None,
@@ -124,7 +123,6 @@ class Cat():
                  backstory="clanborn",
                  parent1=None,
                  parent2=None,
-                 suffix=None,
                  specsuffix_hidden=False,
                  ID=None,
                  moons=None,
@@ -140,7 +138,7 @@ class Cat():
         self.history = None
         if faded:
             self.ID = ID
-            self.name = Name(status, prefix=prefix, suffix=suffix)
+            self.name = None
             self.parent1 = None
             self.parent2 = None
             self.adoptive_parents = []
@@ -180,6 +178,7 @@ class Cat():
         self.species2 = species2
 
         # Public attributes
+        self.name = name
         self.gender = gender
         self.species_display1 = species_display1
         self.species_display2 = species_display2
@@ -375,6 +374,127 @@ class Cat():
                     self.genderalign = self.gender
             else:
                 self.genderalign = self.gender
+            
+            # Name! Hope this works ;-;
+            self.nightnamenumber=randint(1, 3)
+            if self.nightnamenumber == 1:
+                self.nightnametype="Night"
+            elif self.nightnamenumber == 2:
+                self.nightnametype="Attribute"
+            else:
+                self.nightnametype="Personality"
+
+            if self.nightnametype == "Night":
+                night_prefixes=[
+                    "Moon", "Star", "Bright", "Eclipse", "Meteor", "North"
+                ]
+                night_suffixes=[
+                    "watcher", "bringer", "flight", "speaker", "reader", "listener"
+                ]
+            elif self.nightnametype == "Attribute":
+                night_prefixes=[
+                    "Big", "Strong", "Swift", "Quick", "Small", "Tiny"
+                ]
+                night_suffixes=[
+                    "wings", "tail", "strike", "claws", "flight", "swipe", "sight"
+                ]
+            elif self.nightnametype == "Personality":
+                night_prefixes=[
+                    "Thoughtful", "Vengeful", "Greatness", "Wisdom", "Bravery", "Prowess", "Freedom", "Hopeful", "Patience", "Charity", "Kindness", "Honesty", "Loyalty", "Courage", "Charming", "Cleverness"
+                ]
+                night_suffixes=None
+
+            leaf_names=[
+                "Willow", "Clover", "Bamboo", "Jade", "Juniper", "Lily", "Daisy", "Briar", "Grove",  "Nightshade", "Evergreen",  "Hemlock", "Nettle", "Sundew", "Belladonna", "Castor", "Foxglove", "Birch", "Snakeroot", "Larkspur",  "Bayleaf", "Anther", "Calyx", "Cypress", "Aster", "Orchid",  "Myrtle", "Crocus", "Dracaena", "Coleus", "Cedar", "Magnolia", "Redwood", "Maple", "Sycamore", "Pine", "Hickory"
+            ]
+
+            ice_names=[
+                "Snowfall", "Blizzard", "Glacier", "Freeze", "Frostbite", "Tundra", "Snowstorm", "Snowy", "Winter", "Hail", "Hailstorm", "Frostburn", "Walrus", "Lynx", "Polar", "Seal", "Penguin", "North", "Aurora", "Melt", "Arctic", "Wolf", "Fox", "Avalanche", "Sleet", "Snowshoe", "Hare", "Crystal", "Frost", "Berber", "Brash", "Contrail", "Snowdrift", "Fjord", "Plow", "Mink", "Whale", "Narwhal", "Tern", "Orca", "Puffin", "Ptarmigan", "Caribou", "Antler", "Shiver", "Nippy", "Chill", "Frigid", "Iceberg", "Diamond", "Glass", "Frazil", "Quartz"
+            ]
+
+            sea_names=[
+                "Aquamarine", "Orca", "Fish", "Ocean", "Tide", "Moon", "Coral", "Riptide", "Tsunami", "Flood", "Wave", "Diamond", "Shark", "Dolphin", "Octopus", "Crab", "Pearl", "Shore", "Seashell", "River", "Beach", "Lake", "Delta", "Stream", "Blue", "Depth", "Indigo", "Violet", "Salmon", "Whirlpool", "Pool", "Waterfall", "Rain", "Shell", "Sapphire", "Cerulean", "Typhoon", "Current", "Bay", "Cyan", "Downpour", "Drizzle", "Cod", "Bluegill", "Fin", "Trout", "Bass", "Marlin", "Mahi", "Carp", "Snook", "Lionfish", "Flounder", "Snapper", "Angler"
+            ]
+
+            sand_names=[
+                "Scorpion", "Desert", "Heatwave", "Mosaic", "Glass", "Oasis", "Palm", "Vulture", "Cactus", "Sting", "Snake", "Burn", "Ray", "Sun", "Fox", "Tan", "Aardvark", "Caracal", "Antelope", "Coyote", "Hyena", "Acacia", "Sandgrouse", "Sahara", "Dune", "Sandstorm", "Canyon", "Sierra", "Jerboa", "Savannah", "Camel", "Outback", "Drought", "Barren", "Quicksand", "Summer", "Dust", "Sandpiper", "Kalahari", "Arid", "Onyx", "Quartz", "Calcite", "Basalt"
+            ]
+
+            rain_names=[
+                "Charming", "Brave", "Hopeful", "Corageous", "Clever", "Dazzling", "Beautiful", "Exquisite", "Magnificent", "Tangerine", "Orange", "Pinapple", "Mango", "Coconut", "Peach", "Pear", "Banana", "Pumpkin", "Apricot", "Grapefruit", "Dragonfruit", "Watermelon", "Persimmon", "Kiwi", "Sloth", "Snake", "Chameleon", "Sugarglider", "Pangolin", "Leopard", "Forest", "Canopy", "Python", "Tiger", "Hummingbird", "Bear", "Lily", "Orchid", "Lilac", "Wisteria", "Jasmine", "Oleander"
+            ]
+
+            mud_names=[
+                "Clay", "Swamp", "Crocodile", "Caiman", "Reed", "Fern", "Cattail", "Acorn", "Agate", "Alligator", "Autumn", "Bayou", "Bramble", "Creek", "Egret", "Auburn", "Bronze", "Umber", "Brick", "Amber", "Marsh", "Jasper", "Silt", "Cypress", "Loam", "Mulch", "Maroon", "Copper", "Geode", "Bog", "Hyacinth", "Slue", "Moss", "Snake", "Cottonmouth", "Gar", "Hog", "Boar", "Bass", "Coot", "Duck", "Ibis", "Salamander", "Toad", "Frog", "Puma", "Taper", "Snail", "Sludge"
+            ]
+
+            hive_names=[
+                "Bee", "Wasp", "Cricket", "Stickbug", "Hornet", "Fireant", "Sting", "Mosquito", "Fly", "Mantis", "Beetle", "Spider", "Firefly", "Alderfly", "Antlion", "Bluejacket", "Bristletail", "Caterpillar", "Carniolan", "Carpenter", "Cobalt", "Cockroach", "Horntail", "Hoverfly", "Larder", "Longhorn", "Nightcrawler", "Skipjack", "Springtail", "Spoonwing", "Citricola", "Chrysis", "Ladybug", "Lilyleaf", "Myrmecia", "Rubytail", "Summerthorn"
+            ]
+            sky_names=[
+                "Flame", "Fire", "Smoke", "Ash", "Soot", "Burn", "Blaze", "Hawk", "Eagle", "Owl", "Osprey", "Ruby", "Falcon", "Vulture", "Tourmaline", "Condor", "Buzzard", "Red", "Scarlet", "Crimson", "Kestrel", "Maroon", "Kite", "Merlin", "Garnet", "Carnelian", "Topaz", "Citrine", "Jasper", "Aventurine", "Zircon", "Cliff", "Cliffside", "Rock", "Rockfall", "Mountain", "Ridge", "Summit", "Boulder", "Rubble", "Arete", "Range", "Scree", "Massif", "Moraine", "Peak", "Cairn", "Baisin", "Pinnacle", "Vermillion", "Cardinal", "Amaranth", "Burgundy", "Copper", "Claret", "Auburn", "Cloud"
+            ]
+
+
+            silk_names=[
+                "Monarch", "Morpho", "Peacock", "Orchid", "Sunset", "Glasswing", "Silkworm", "Swallowtail", "Adonis", "Commodore", "Lacewing", "Birdwing", "Emperor", "Agrias", "Ermine", "Comet", "Galium", "Cecropia", "Leopard", "Atlas", "Browntail", "Cinnabar," "Ethereal", "Tigermoth", "Hummingbird"
+            ]
+            self.name_speciesnumber=randint(1, 2)
+            if self.name_speciesnumber == 1:
+                if self.species1 == "SK":
+                    self.name=choice(sky_names)
+                elif self.species1 == "SA":
+                    self.name=choice(sand_names)
+                elif self.species1 == "IC":
+                    self.name=choice(ice_names)
+                elif self.species1 == "SE":
+                    self.name=choice(sea_names)
+                elif self.species1 == "NI":
+                    if night_suffixes is None:
+                        self.name=choice(night_prefixes)
+                    else:
+                        self.name=choice(night_prefixes) + choice(night_suffixes)
+                elif self.species1 == "MU":
+                    self.name=choice(mud_names)
+                elif self.species1 == "RA":
+                    self.name=choice(rain_names)
+                elif self.species1 == "SI":
+                    self.name=choice(silk_names)
+                elif self.species1 == "HI":
+                    self.name=choice(hive_names)
+                elif self.species1 == "LE":
+                    self.name=choice(leaf_names)
+                else:
+                    self.name="This is a bug!"
+            elif self.name_speciesnumber == 2:
+                if self.species2 == "SK":
+                    self.name=choice(sky_names)
+                elif self.species2 == "SA":
+                    self.name=choice(sand_names)
+                elif self.species2 == "IC":
+                    self.name=choice(ice_names)
+                elif self.species2 == "SE":
+                    self.name=choice(sea_names)
+                elif self.species2 == "NI":
+                    if night_suffixes is None:
+                        self.name=choice(night_prefixes)
+                    else:
+                        self.name=choice(night_prefixes) + choice(night_suffixes)
+                elif self.species2 == "MU":
+                    self.name=choice(mud_names)
+                elif self.species2 == "RA":
+                    self.name=choice(rain_names)
+                elif self.species2 == "SI":
+                    self.name=choice(silk_names)
+                elif self.species2 == "HI":
+                    self.name=choice(hive_names)
+                elif self.species2 == "LE":
+                    self.name=choice(leaf_names)
+                else:
+                    self.name="This is a bug!"
+            else:
+                self.name="This is a bug!"
+
 
             """if self.genderalign in ["female", "trans female"]:
                 self.pronouns = [self.default_pronouns[1].copy()]
@@ -424,21 +544,7 @@ class Cat():
             biome = None
         # NAME
         # load_existing_name is needed so existing cats don't get their names changed/fixed for no reason
-        if self.pelt is not None:
-            self.name = Name(status,
-                             prefix,
-                             suffix,
-                             self.pelt.colour,
-                             self.pelt.eye_colour,
-                             self.pelt.name,
-                             self.pelt.tortiepattern,
-                             biome=biome,
-                             specsuffix_hidden=self.specsuffix_hidden,
-                             load_existing_name=loading_cat,
-                             moons=self.moons)
-        else:
-            self.name = Name(status, prefix, suffix, eyes=self.pelt.eye_colour, specsuffix_hidden=self.specsuffix_hidden,
-                             load_existing_name = loading_cat)
+        
 
         # Private Sprite
         self._sprite = None
@@ -773,7 +879,6 @@ class Cat():
                     only be true for non-timeskip status changes. """
         old_status = self.status
         self.status = new_status
-        self.name.status = new_status
 
         self.update_mentor()
         for app in self.apprentice.copy():
@@ -2781,7 +2886,7 @@ class Cat():
             print("ERROR: in loading faded cat")
             return False
 
-        cat_ob = Cat(ID=cat_info["ID"], prefix=cat_info["name_prefix"], suffix=cat_info["name_suffix"],
+        cat_ob = Cat(ID=cat_info["ID"], name=cat_info["name"],
                      status=cat_info["status"], moons=cat_info["moons"], faded=True,
                      df=cat_info["df"] if "df" in cat_info else False)
         if cat_info["parent1"]:
@@ -2931,8 +3036,7 @@ class Cat():
         if faded:
             return {
                 "ID": self.ID,
-                "name_prefix": self.name.prefix,
-                "name_suffix": self.name.suffix,
+                "name": self.name,
                 "status": self.status,
                 "moons": self.moons,
                 "dead_for": self.dead_for,
@@ -2945,9 +3049,7 @@ class Cat():
         else:
             return {
                 "ID": self.ID,
-                "name_prefix": self.name.prefix,
-                "name_suffix": self.name.suffix,
-                "specsuffix_hidden": self.name.specsuffix_hidden,
+                "name": self.name,
                 "gender": self.gender,
                 "gender_align": self.genderalign,
                 #"pronouns": self.pronouns,

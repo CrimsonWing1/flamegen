@@ -113,7 +113,6 @@ class Game():
         'traceback': '',
         'apprentice': None,
         'change_name': '',
-        'change_suffix': '',
         'name_cat': None,
         'biome': None,
         'camp_bg': None,

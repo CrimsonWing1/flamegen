@@ -799,8 +799,8 @@ class Condition_Events():
                         event = f'{cat.name} has decided to retire from normal Clan duty.'
 
                     if cat.age == 'adolescent':
-                        event += f" They are given the name {cat.name.prefix}{cat.name.suffix} in honor " \
-                                    f"of their contributions to {game.clan.name}Clan."
+                        event += f" They are given the name {cat.name} in honor " \
+                                    f"of their contributions to the {game.clan.name} Kingdom."
 
                     cat.retire_cat()
                     # Don't add this to the condition event list: instead make it it's own event, a ceremony. 
