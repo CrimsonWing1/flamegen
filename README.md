@@ -5,13 +5,13 @@ Initially created by **just-some-cat**, edit created by **SableSteel** (and many
 ## Progress
 ### Finished -
 - Tribes generating for new cats
+- Name system
   
 ### In Progress -
-- Name system
+- Sprite redraws
   
 ### Will be added -
 - Inheriting parent's tribe(s)
-- Sprite redraws (obviously)
 - Thought/event/patrol rewrites
 - Condition/illness rewrites / tribe-specific conditions/illnesses (like firescales, or a MudWing drying out, etc)
 - Patrol art redraws
