@@ -77,5 +77,45 @@
     "persistent headaches": [
         "r_c notices with some concern that any time m_c opens {PRONOUN/m_c/poss} eyes, {PRONOUN/m_c/subject} {VERB/m_c/mewl/mewls} incessantly and try to wriggle into the darkest corners of the medicine cat den. r_c suspects {PRONOUN/m_c/subject} may have chronic headaches.",
         "Rather than go outside in the bright sunlight to play with {PRONOUN/m_c/poss} littermates, m_c prefers to huddle by {PRONOUN/m_c/self} in the dark and quiet of the medicine cat den, {PRONOUN/m_c/poss} head hurting too much to move."
+    ],
+    "firescales": [
+        "r_c has noticed the other kits avoiding m_c lately. When asking {PRONOUN/m_c/object} why, m_c says that {PRONOUN/m_c/subject} burned one of them by accident a few days ago. r_c starts to reassure m_c that losing control of your firebreath is normal, but {PRONOUN/m_c/subject} {VERB/m_c/interrupt/interrupts}, saying that the kit got burned by touching m_c. Oh. Firescales, huh?",
+        "m_c keeps avoiding touching anyone or anything else, and when asked why, avoids answering, but eventually admits that {PRONOUN/m_c/poss} scales are so hot that anything {PRONOUN/m_c/subject} touch gets burnt."
+    ],
+    "frostscales": [
+        "A kit came crying to r_c about how m_c was so cold, nobody could even get close to {PRONOUN/m_c/object}. When r_c investigated, it turned out that m_c developed frostscales.",
+        "m_c has been avoiding getting to close to anything recently. When asked why, {PRONOUN/m_c/subject} {VERB/m_c/say/says} that anything that touches {PRONOUN/m_c/object} gets frostbite."
+    ],
+    "heatscales": [
+        "m_c comes crying to r_c after accidentially charring a plant. After looking m_c over, r_c diagnoses {PRONOUN/m_c/object} with heatscales.",
+        "r_c notices m_c wince after stepping in a puddle of water. Getting confused, r_c touches the puddle, before recoiling- it's almost boiling hot, and it certainly wasn't before! After asking m_c, {PRONOUN/m_c/subject} admits that anything {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} gets really hot, and r_c diagnoses m_c with heatscales."
+    ],
+    "dullscales": [
+        "m_c hasn't been able to get enough sleep, always tossing and turning or snorting and startling {PRONOUN/m_c/object}{VERB/m_c/selves/self} awake. After being checked out by r_c, m_c is diagnosed with a snout deformity that causes {PRONOUN/m_c/object} to have difficulty sleeping- called dullscales by r_c.",
+        "r_c watches m_c play with the other dragonets, but try as {PRONOUN/m_c/subject} might, m_c just can't seem to change colors. r_c approaches and offers to look {PRONOUN/m_c/object} over, and once m_c hesitantly accepts, r_c diagnoses {PRONOUN/m_c/object} with dullscales- a snout deformity that stops m_c from getting enough sleep to change color."
+    ],
+    "mind reading": [
+        "r_c has been worried about m_c's odd behaivor recently- though this train of thought is cut right off as m_c approaches and asks why r_c has been worried, despite r_c talking in {PRONOUN/r_c/poss} head the whole time!",
+        "m_c has been overwhelmed by the sheer amount of voices recently. When someone asks what {PRONOUN/m_c/subject} {VERB/m_c/mean/means}, m_c points out that it's just like that- someone talking with a quieter version of their voice in the background. After a brief conversation, m_c learns that the quieter voices were, in fact, thoughts."
+    ],
+    "future sight": [
+        "m_c tells an older dragon that they'd better watch out for water on their evening patrol today. {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} laughed at and brushed off, though m_c is the one laughing when the dragon comes back drenched with a story of a waterfall. When they demand to know what m_c did, m_c just says {PRONOUN/m_c/subject} saw it in the future.",
+        "r_c was told by m_c that {PRONOUN/r_c/subject} should keep a close eye on the other kits. Though r_c is confused, {PRONOUN/r_c/subject} {VERB/r_c/oblige/obliges}, and is very thankful when it saves one of them from being carried away by a hawk. When r_c later asks m_c how {PRONOUN/m_c/subject} knew, m_c says {PRONOUN/m_c/subject} saw it in a vision of the future."
+    ],
+    "flamesilk": [
+        "m_c's wrists have been glowing recently. According to r_c, m_c most likely will have flamesilk.",
+        "m_c's wrists have been glowing a lot recently. A sign of flamesilk, most likely."
+    ],
+    "leafspeak": [
+        "r_c approaches m_c, who appears to be talking to nothing. Upon r_c's questioning, m_c is actually talking to the plants with leafspeak.",
+        "m_c suprises everyone when {PRONOUN/m_c/subject} {VERB/m_c/come/comes} back from briefly escaping outside of the camp with a giant flower. When asked how {PRONOUN/m_c/subject} found it, m_c says that it was small, but {PRONOUN/m_c/subject} told it to grow bigger, and it did."
+    ],
+    "poisonsilk": [
+        "r_c is worrying a lot about what the green tint to m_c's wrists is. Knowing practically nothing about BeetleWings, r_c's best guess is some variation of flamesilk.",
+        "m_c's wrists have begun to turn a poisonous green. Though nobody knows much of anything about BeetleWings, the best guess is that it's some form of flamesilk."
+    ],
+    "animus": [
+        "m_c asks if r_c wants to see a magic trick. When r_c agrees, m_c commands a stone to float around before landing on r_c's head. r_c is shocked silent for a good second before telling m_c that {PRONOUN/m_c/subject} {VERB/m_c/have/has} animus magic, and to be careful.",
+        "m_c has been clearly excited lately. When asked why, m_c says that {PRONOUN/m_c/subject} figured out something, before commanding the dragon that asked to spin in circles. They do so, and m_c giggles, while the other dragon is shocked that m_c apparently has animus magic."
     ]
 }
