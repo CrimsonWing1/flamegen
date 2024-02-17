@@ -78,5 +78,33 @@
             "m_c wakes and wails, {PRONOUN/m_c/poss} dreams haunted by visions of {PRONOUN/m_c/poss} dead loved one.",
             "m_c jolts awake and immediately leaves the den to clear {PRONOUN/m_c/poss} head, hoping some fresh night air will help {PRONOUN/m_c/object} cope with the sadness and memories."
         ]
+    },
+    "apathy": {
+        "permanent apathy": [
+            "Despite r_c's hopes, m_c can feel {PRONOUN/m_c/poss} emotions drifting farther and farther away, never to return.",
+            "This is the longest bout of apathy m_c has had. Upon questioning r_c, m_c learns that {PRONOUN/m_c/poss} {VERB/m_c/are/is} unlikely to ever get {PRONOUN/m_c/poss} full emotions back."
+        ]
+    },
+    "cracked soul": {
+        "apathy": [
+            "m_c can feel {PRONOUN/m_c/poss} emotions dulling futher than they already have.",
+            "r_c looks at m_c with a gaze of dissapointment, stating that {PRONOUN/m_c/subject} should have listened and toned down on the magic, and {PRONOUN/m_c/poss} wouldn't have temporarily lost their emotion like this."
+        ],
+        "shattered soul": [
+            "r_c is practically having a panic attack at this new development. m_c tries {PRONOUN/m_c/poss} best to reassure r_c, but... it's pretty hard to say anything reassuring when your soul is almost shattered to dust.",
+            "r_c is livid. {PRONOUN/r_c/subject} told m_c, {PRONOUN/r_c/subject} TOLD {PRONOUN/m_c/object}, but what did {PRONOUN/m_c/subject} do? Use more magic! And now... and now {PRONOUN/m_c/poss} soul is practically shattered, about to crumble into dust at any point.",
+            "m_c wakes up one day, and almost collaspes at the stab of pain going right through {PRONOUN/m_c/poss} heart. Or, not heart... soul. Did m_c use too much magic again? How bad is it...? m_c winces at the fact that it's hard to even bring {PRONOUN/m_c/object}self to care."
+        ]
+    },
+    "shattered soul": {
+        "apathy": [
+            "m_c can feel {PRONOUN/m_c/poss} emotions dulling futher than they already have.",
+            "r_c looks at m_c with a gaze of dissapointment, stating that {PRONOUN/m_c/subject} should have listened and toned down on the magic, and {PRONOUN/m_c/poss} wouldn't have temporarily lost their emotion like this."
+        ],
+        "soulless": [
+            "r_c is out of panic, doing nothing but looking at m_c's soulless eyes with dissapointment and a hint of sadness. m_c stares right back, empty gaze practically right through r_c.",
+            "r_c just collaspes, exhausted with tears in {PRONOUN/r_c/poss} eyes. m_c refused to listen and stop using magic, and is now paying the price of the last shards of {PRONOUN/m_c/poss} soul.",
+            "m_c wakes up one day, and the world seems cold and m_c feels dull and soulless {PRONOUN/m_c/subject} just can't bring {PRONOUN/m_c/object}self to care about anything anymore."
+        ]
     }
 }
