@@ -605,5 +605,358 @@
             "poppy",
             "juniper"
         ]
+    },
+    "firescales": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 2,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "heat stroke",
+                "chance": 80
+            },
+            {
+                "name": "heat exhaustion",
+                "chance": 50
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "ragwort",
+            "moss"
+        ]
+    },
+    "ashscales": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 3,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "shivering",
+                "chance": 15
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "ragwort",
+            "moss"
+        ]
+    },
+    "frostscales": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 2,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "shivering",
+                "chance": 25
+            },
+            {
+                "name": "frostbite",
+                "chance": 55
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "ragwort",
+            "poppy",
+            "moss",
+            "dandelion"
+        ]
+    },
+    "dullscales": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 3,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "headache",
+                "chance": 25
+            }
+        ],
+        "herbs": [
+            "poppy",
+            "juniper"
+        ]
+    },
+    "heatscales": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 2,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "heat stroke",
+                "chance": 80
+            },
+            {
+                "name": "heat exhaustion",
+                "chance": 50
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "ragwort",
+            "moss"
+        ]
+    },
+    "animus": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 5,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "apathy",
+                "chance": 30
+            },
+            {
+                "name": "cracked soul",
+                "chance": 60
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "soulless": {
+        "severity": "severe",
+        "congenital": "never",
+        "moons_until": 0,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "apathy",
+                "chance": 10
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "mind reading": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 4,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "headache",
+                "chance": 30
+            },
+            
+            {
+                "name": "overwhelmed",
+                "chance": 45
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "future sight": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 4,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "headache",
+                "chance": 30
+            },
+            
+            {
+                "name": "constant nightmares",
+                "chance": 45
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "flamesilk": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 5,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "heat exhaustion",
+                "chance": 40
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "leafspeak": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 4,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "overwhelmed",
+                "chance": 30
+            }
+        ],
+        "herbs": [
+            "juniper",
+            "thyme",
+            "poppy"
+        ]
+    },
+    "poisonsilk": {
+        "severity": "minor",
+        "congenital": "always",
+        "moons_until": 5,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "poisoned",
+                "chance": 65
+            }
+        ],
+        "herbs": [
+            "dandelion",
+            "tansy",
+            "juniper",
+            "ragwort",
+            "poppy"
+        ]
     }
 }
