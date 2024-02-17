@@ -263,6 +263,12 @@
 		"war_death_modifier": 250,
 		"base_random_murder_chance": 25,
 		"base_murder_kill_chance": 80,
+		"cracked_random_murder_chance": 23,
+		"cracked_murder_kill_chance": 72,
+		"shattered_random_murder_chance": 20,
+		"shattered_murder_kill_chance": 65,
+		"soulless_random_murder_chance": 15,
+		"soulless_murder_kill_chance": 50,
 		"old_age_death_start": 150,
 		"old_age_death_curve": 4.5,
 		"comment": [
