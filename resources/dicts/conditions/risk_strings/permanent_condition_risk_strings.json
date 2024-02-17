@@ -157,5 +157,99 @@
             "r_c sees m_c headed towards the medicine cat den, wincing with every step, and ducks inside to prepare a nest for {PRONOUN/m_c/object} in the darkest, quietest corner possible.",
             "m_c wakes up with pounding head pain and horrible light sensitivity. {PRONOUN/m_c/subject/CAP} {VERB/m_c/curl/curls} up as tightly in {PRONOUN/m_c/poss} nest as {PRONOUN/m_c/subject} can, screwing {PRONOUN/m_c/poss} eyes shut and flattening {PRONOUN/m_c/poss} ears. There's no way {PRONOUN/m_c/subject}'ll get work done today."
         ]
+    },
+    "firescales": {
+        "heat stroke": [
+            "m_c's firescales have been practically burning {PRONOUN/m_c/object} to the touch too lately, and after coming to r_c with a bout of feeling faint, r_c worryingly diagnoses m_c with heat stroke."
+        ],
+        "heat exhaustion": [
+            "m_c's firescales have been bothering {PRONOUN/m_c/object} lately- feeling a bit too hot. After talking to r_c, m_c is diagnosed with heat exhaustion and ordered to rest.",
+            "m_c's firescales have been getting way too hot recently, and {PRONOUN/m_c/subject}{VERB/m_c/'ll/'s} been diagnosed with heat exhaustion."
+        ]
+    },
+    "ashscales": {
+        "shivering": [
+            "SkyWings usually have fire to keep them warm in cold environments. m_c, on the other talon, doesn't, {PRONOUN/m_c/subject} {VERB/m_c/think/thinks} bitterly as {PRONOUN/m_c/subject} {VERB/m_c/shiver/shivers} in {PRONOUN/m_c/poss} nest.",
+            "m_c, not having SkyWing fire to keep {PRONOUN/m_c/object} warm, is curled up shivering after a particularly cold night."
+        ]
+    },
+    "frostscales": {
+        "shivering": [
+            "m_c's frostscales have been going haywire recently, and r_c pulled {PRONOUN/m_c/object} into {PRONOUN/r_c/poss} den before releasing {PRONOUN/m_c/object} with a diagnosis of a shiver.",
+            "m_c's frostscales have left {PRONOUN/m_c/object} shivering today."
+        ],
+        "frostbite": [
+            "m_c has been radiating a worrying amount of cold lately, r_c notes. Upon checking on {PRONOUN/m_c/object}, r_c finds m_c frostbitten.",
+            "m_c's frostscales are radiating so much cold, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} been left frostbitten."
+        ]
+    },
+    "heatscales": {
+        "heat stroke": [
+            "m_c's heatscales have been practically burning {PRONOUN/m_c/object} to the touch lately, and after coming to r_c with a bout of feeling faint, r_c worryingly diagnoses m_c with heat stroke."
+        ],
+        "heat exhaustion": [
+            "m_c's heatscales have been bothering {PRONOUN/m_c/object} lately- feeling a bit too hot. After talking to r_c, m_c is diagnosed with heat exhaustion and ordered to rest.",
+            "m_c's heatscales have been getting way too hot recently, and {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} been diagnosed with heat exhaustion."
+        ]
+    },
+    "dullscales": {
+        "headache": [
+            "m_c's snout has been annoyingly preventing {PRONOUN/m_c/object} from sleeping a whole lot lately, and {PRONOUN/m_c/subject} can feel the headache coming on from sleep deprevation.",
+            "r_c has been worried about m_c's sleep recently, and upon asking, m_c snaps at {PRONOUN/r_c/object}, before clutching {PRONOUN/m_c/poss} head."
+        ]
+    },
+    "animus": {
+        "apathy": [
+            "m_c can feel {PRONOUN/m_c/poss} emotions dulling.",
+            "r_c has recently noticed m_c's lack of care or emotion, and eventually diagnoses {PRONOUN/m_c/object} with apathy due to magic overuse."
+        ],
+        "cracked soul": [
+            "r_c is in a whirlwind of a panic, yelling at m_c for going so far with {PRONOUN/m_c/poss} animus magic that {PRONOUN/m_c/poss} soul cracked!",
+            "m_c wakes up one day, and feels a little less... whole. Cracked, almost. {PRONOUN/m_c/subject/CAP} {VERB/m_c/remember/remembers} the stories of animus magic usage causing soul damage... but that's not true. Right?"
+        ]
+    },
+    "soulless": {
+        "apathy": [
+            "r_c just stares at m_c, before dryly asking if {PRONOUN/m_c/subject} REALLY thought {PRONOUN/m_c/subject} had any symptoms of apathy.",
+            "Though m_c barely feels much of anything anyways, {PRONOUN/m_c/subject} {VERB/m_c/do/does} feel a little colder inside."
+        ]
+    },
+    "mind reading": {
+        "headache": [
+            "m_c's is starting to get a headache from the constant thoughts bombarding {PRONOUN/m_c/poss} head.",
+            "m_c complains to r_c about all the thoughts giving {PRONOUN/m_c/object} a headache."
+        ],
+        "overwhelmed": [
+            "m_c curles up in {PRONOUN/m_c/poss} nest, trying to hide from the constant barrage of thoughts.",
+            "r_c covers m_c's ears gently, attemping to give {PRONOUN/m_c/object} a chance to focus on blocking out the overwhelming amount of thoughts."
+        ]
+    },
+    "future sight": {
+        "headache": [
+            "m_c's is starting to get a headache from the constant visions bombarding {PRONOUN/m_c/poss} head.",
+            "m_c complains to r_c about all the visions giving {PRONOUN/m_c/object} a headache."
+        ],
+        "constant nightmares": [
+            "m_c wakes up screaming about a terrible vision {PRONOUN/m_c/subject} had.",
+            "m_c can't sleep, haunted by a terrible vision {PRONOUN/m_c/subject} saw in the future."
+        ]
+    },
+    "flamesilk": {
+        "heat exhaustion": [
+            "m_c has been producing too much flamesilk recently, and has ended up with a bit of heat exhasution.",
+            "r_c warns off m_c from producing too much sun silk again, or {PRONOUN/m_c/subject}'ll end up with heat exhasution... again."
+        ]
+    },
+    "leafspeak": {
+        "overwhelmed": [
+            "m_c has been speaking to plants too much recently, and has ended up overwhelmed from the interactions.",
+            "m_c has been overusing leafspeak recently, r_c warns, and that's why {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} so overwhemled from talking with a blade of grass a bit ago."
+        ]
+    },
+    "poisonsilk": {
+        "poisoning": [
+            "m_c has been feeling pretty woozy lately. When asking r_c about it, r_c diagnoses {PRONOUN/m_c/object} with poisoning- perhaps m_c has been overusing {PRONOUN/m_c/poss} poisonsilk?",
+            "When r_c comes to check on m_c, what with the never seen before power, r_c finds {PRONOUN/m_c/object} passed out. After worryingly looking m_c over, r_c diagnoses {PRONOUN/m_c/object} with poisoning from {PRONOUN/m_c/poss} poisonsilk."
+        ]
     }
 }
