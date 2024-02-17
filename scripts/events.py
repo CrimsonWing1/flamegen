@@ -1696,8 +1696,13 @@ class Events:
         if cat.age in ["kitten", "newborn"]:
             return
         
-        # if this cat is unstable and aggressive, we lower the random murder chance
-        random_murder_chance = int(game.config["death_related"]["base_random_murder_chance"])
+        # if this cat is unstable and aggressive, we lower the random murder chance, and it starts lower if they have a damaged soul from animus magic
+        if "soulless" in cat.permanent_condition:
+            random_murder_chance = int(game.config["death_related"]["soulless_random_murder_chance"])
+        elif "shattered soul" in cat.permanent_condition:
+            random_murder_chance = int(game.config["death_related"]["shattered_random_murder_chance"])
+        else:
+            random_murder_chance = int(game.config["death_related"]["base_random_murder_chance"])
         random_murder_chance -= 0.5 * ((cat.personality.aggression) + (16 - cat.personality.stability))
 
         # Check to see if random murder is triggered. If so, we allow targets to be anyone they have even the smallest amount
@@ -1708,7 +1713,7 @@ class Events:
                 return
             
             chosen_target = random.choice(targets)
-            #print("Random Murder!", str(cat.name),  str(Cat.fetch_cat(chosen_target.cat_to).name))
+            print("Random Murder!", str(cat.name),  str(Cat.fetch_cat(chosen_target.cat_to).name))
             
             # If at war, grab enemy clans
             enemy_clan = None
@@ -1724,44 +1729,77 @@ class Events:
 
             return
 
-        # will this cat actually murder? this takes into account stability and lawfulness
-        murder_capable = 7
-        if cat.personality.stability < 6:
-            murder_capable -= 3
-        if cat.personality.lawfulness < 6:
-            murder_capable -= 2
-        if cat.personality.aggression > 10:
-            murder_capable -= 1
-        elif cat.personality.aggression > 12:
-            murder_capable -= 3
+        # will this cat actually murder? this takes into account stability and lawfulness (and now ignores it if they're soulless, hopefully)
 
-        murder_capable = max(1, murder_capable)
+        if "soulless" not in cat.permanent_condition:
+            murder_capable = 7
+            if cat.personality.stability < 6:
+                murder_capable -= 3
+            if cat.personality.lawfulness < 6:
+                murder_capable -= 2
+            if cat.personality.aggression > 10:
+                murder_capable -= 1
+            elif cat.personality.aggression > 12:
+                murder_capable -= 3
 
-        if random.getrandbits(murder_capable) != 1:
-            #print(f'{cat.name} is currently not capable of murder')
-            return
+            murder_capable = max(1, murder_capable)
+
+            if random.getrandbits(murder_capable) != 1:
+                #print(f'{cat.name} is currently not capable of murder')
+                return
 
         #print("Murder Capable: " + str(murder_capable))
-        #print(f'{cat.name} is feeling murderous')
-        # If random murder is not triggered, targets can only be those they have some dislike for
-        hate_relation = [i for i in relationships if
+        print(f'{cat.name} is feeling murderous')
+        # If random murder is not triggered, targets can only be those they have some dislike for, less dislike needed if they have a damaged soul
+        if "soulless" in cat.permanent_condition:
+            hate_relation = [i for i in relationships if
+                        i.dislike > 7 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
+            targets.extend(hate_relation)
+            resent_relation = [i for i in relationships if
+                        i.jealousy > 7 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
+            targets.extend(resent_relation)
+        elif "shattered soul" in cat.illnesses:
+            hate_relation = [i for i in relationships if
+                        i.dislike > 12 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
+            targets.extend(hate_relation)
+            resent_relation = [i for i in relationships if
+                        i.jealousy > 12 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
+            targets.extend(resent_relation)
+        else:
+            hate_relation = [i for i in relationships if
                         i.dislike > 15 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
-        targets.extend(hate_relation)
-        resent_relation = [i for i in relationships if
+            targets.extend(hate_relation)
+            resent_relation = [i for i in relationships if
                         i.jealousy > 15 and not Cat.fetch_cat(i.cat_to).dead and not Cat.fetch_cat(i.cat_to).outside]
-        targets.extend(resent_relation)
+            targets.extend(resent_relation)
 
         # if we have some, then we need to decide if this cat will kill
         if targets:
             chosen_target = random.choice(targets)
-            #print(cat.name, 'TARGET CHOSEN', Cat.fetch_cat(chosen_target.cat_to).name)
+            print(cat.name, 'TARGET CHOSEN', Cat.fetch_cat(chosen_target.cat_to).name)
 
-            kill_chance = game.config["death_related"]["base_murder_kill_chance"]
+            if "soulless" in cat.permanent_condition:
+                kill_chance = game.config["death_related"]["soulless_murder_kill_chance"]
+            elif "shattered soul" in cat.permanent_condition:
+                kill_chance = game.config["death_related"]["shattered_murder_kill_chance"]
+            else:
+                kill_chance = game.config["death_related"]["base_murder_kill_chance"]
 
-            relation_modifier = int(0.5 * int(chosen_target.dislike + chosen_target.jealousy)) - \
-            int(0.5 * int(chosen_target.platonic_like + chosen_target.trust + chosen_target.comfortable))
-            #print("Relation Modifier: ", relation_modifier)
-            kill_chance -= relation_modifier
+            # shattered souls care less about positive relations, though not to the extent of soulless
+            if "shattered soul" in cat.permanent_condition:
+                relation_modifier = int(0.5 * int(chosen_target.dislike + chosen_target.jealousy)) - \
+                0.8 * int(0.5 * int(chosen_target.platonic_like + chosen_target.trust + chosen_target.comfortable))
+                #print("Relation Modifier: ", relation_modifier)
+            else:
+                relation_modifier = int(0.5 * int(chosen_target.dislike + chosen_target.jealousy)) - \
+                int(0.5 * int(chosen_target.platonic_like + chosen_target.trust + chosen_target.comfortable))
+                #print("Relation Modifier: ", relation_modifier)
+            
+            # soulless care less about the relationship they have with the target, positive or negative
+            if "soulless" in cat.permanent_condition:
+                kill_chance -= 0.5 * relation_modifier
+            else:
+                kill_chance -= relation_modifier
 
             if len(chosen_target.log) > 0 and "(high negative effect)" in chosen_target.log[-1]:
                 kill_chance -= 50
@@ -1777,7 +1815,7 @@ class Events:
 
             kill_chance = max(1, int(kill_chance))
              
-            #print("Final kill chance: " + str(kill_chance))
+            print("Final kill chance: " + str(kill_chance))
             
             if not int(random.random() * kill_chance):
                 print(cat.name, 'TARGET CHOSEN', Cat.fetch_cat(chosen_target.cat_to).name)
